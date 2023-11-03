@@ -4,6 +4,10 @@ import Card from "../UI/Card";
 import classes from "./OrderList.module.css";
 
 const OrderList = (props) => {
+const deleteHandler = () => {
+    props.onDeleteOrder(props.orders[0].id);
+}
+
   return (
     <Card className={classes.orders}>
       <ul>
@@ -12,7 +16,8 @@ const OrderList = (props) => {
           .filter((order) => order.table === "table1")
           .map((filteredOrder) => (
             <li key={filteredOrder.id}>
-              {filteredOrder.dish} ({filteredOrder.price}) {filteredOrder.table}
+              {filteredOrder.dish} ({filteredOrder.price})
+              <button onClick={deleteHandler}>Delete</button>
             </li>
           ))}
       </ul>
@@ -22,7 +27,8 @@ const OrderList = (props) => {
           .filter((order) => order.table === "table2")
           .map((filteredOrder) => (
             <li key={filteredOrder.id}>
-              {filteredOrder.dish} ({filteredOrder.price}) {filteredOrder.table}
+              {filteredOrder.dish} ({filteredOrder.price})
+              <button onClick={deleteHandler}>Delete</button>
             </li>
           ))}
       </ul>
@@ -32,7 +38,8 @@ const OrderList = (props) => {
           .filter((order) => order.table === "table3")
           .map((filteredOrder) => (
             <li key={filteredOrder.id}>
-              {filteredOrder.dish} ({filteredOrder.price}) {filteredOrder.table}
+              {filteredOrder.dish} ({filteredOrder.price})
+              <button onClick={deleteHandler}>Delete</button>
             </li>
           ))}
       </ul>
