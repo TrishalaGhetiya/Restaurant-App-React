@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import AddOrder from "./Components/Orders/AddOrder";
+import OrderList from "./Components/Orders/OrderList";
 
 function App() {
+  const [orderList, setOrderList] = useState([]);
+
+  const addOrderHandler = (oDish, oPrice, oTable) => {
+    setOrderList((prevOrderList) => {
+      return [
+        ...prevOrderList,
+        {
+          dish: oDish,
+          price: oPrice,
+          table: oTable,
+          id: Math.random().toString(),
+        },
+      ];
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AddOrder onAddOrder={addOrderHandler} />
+      <OrderList orders={orderList} />
+    </>
   );
 }
 
