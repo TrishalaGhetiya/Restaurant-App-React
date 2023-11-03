@@ -8,29 +8,33 @@ const OrderList = (props) => {
     <Card className={classes.orders}>
       <ul>
         <h3>Table 1</h3>
-        {props.orders.filter((order) => {
-          if (order.table === "table1") {
-            <li key={order.id}>
-              {order.dish} ({order.price}) {order.table}
-            </li>;
-          }
-        })}
+        {props.orders
+          .filter((order) => order.table === "table1")
+          .map((filteredOrder) => (
+            <li key={filteredOrder.id}>
+              {filteredOrder.dish} ({filteredOrder.price}) {filteredOrder.table}
+            </li>
+          ))}
       </ul>
       <ul>
         <h3>Table 2</h3>
-        {props.orders.map((order) => (
-          <li key={order.id}>
-            {order.dish} ({order.price}) {order.table}
-          </li>
-        ))}
+        {props.orders
+          .filter((order) => order.table === "table2")
+          .map((filteredOrder) => (
+            <li key={filteredOrder.id}>
+              {filteredOrder.dish} ({filteredOrder.price}) {filteredOrder.table}
+            </li>
+          ))}
       </ul>
       <ul>
         <h3>Table 3</h3>
-        {props.orders.map((order) => (
-          <li key={order.id}>
-            {order.dish} ({order.price}) {order.table}
-          </li>
-        ))}
+        {props.orders
+          .filter((order) => order.table === "table3")
+          .map((filteredOrder) => (
+            <li key={filteredOrder.id}>
+              {filteredOrder.dish} ({filteredOrder.price}) {filteredOrder.table}
+            </li>
+          ))}
       </ul>
     </Card>
   );
